@@ -88,16 +88,16 @@ module "mod_operational_logging" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_azurenoopsutils"></a> [azurenoopsutils](#requirement\_azurenoopsutils) | ~> 1.0.4 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.22 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.116 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azurenoopsutils"></a> [azurenoopsutils](#provider\_azurenoopsutils) | ~> 1.0.4 |
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.22 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.116 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -105,9 +105,9 @@ module "mod_operational_logging" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_lz_management_resources"></a> [lz\_management\_resources](#module\_lz\_management\_resources) | Azure/alz-management/azurerm | ~> 0.1 |
-| <a name="module_mod_aa_diagnostic_settings"></a> [mod\_aa\_diagnostic\_settings](#module\_mod\_aa\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0 |
+| <a name="module_mod_aa_diagnostic_settings"></a> [mod\_aa\_diagnostic\_settings](#module\_mod\_aa\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
 | <a name="module_mod_azure_region_lookup"></a> [mod\_azure\_region\_lookup](#module\_mod\_azure\_region\_lookup) | azurenoops/overlays-azregions-lookup/azurerm | >= 1.0.0 |
-| <a name="module_mod_log_diagnostic_settings"></a> [mod\_log\_diagnostic\_settings](#module\_mod\_log\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0 |
+| <a name="module_mod_log_diagnostic_settings"></a> [mod\_log\_diagnostic\_settings](#module\_mod\_log\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
 | <a name="module_mod_loganalytics_sa"></a> [mod\_loganalytics\_sa](#module\_mod\_loganalytics\_sa) | azurenoops/overlays-storage-account/azurerm | >= 0.1.0 |
 | <a name="module_mod_scaffold_rg"></a> [mod\_scaffold\_rg](#module\_mod\_scaffold\_rg) | azurenoops/overlays-resource-group/azurerm | >= 1.0.1 |
 
