@@ -1,8 +1,3 @@
-# Azurerm provider configuration
-provider "azurerm" {
-  features {}
-}
-
 module "mod_logging" {
   source = "../../.." # Path to the root of the repository
 
