@@ -8,7 +8,7 @@
 
 # Azure NoOps Management Logging Terraform Module
 
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/azurenoops/overlays-template/azurerm/)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/POps-Rox/overlays-template/azurerm/)
 
 This module deploys logging resources (Log Analytics Workspace, Log Solutions and AMPLS) to an operations or security spoke network described in the [Microsoft recommended Hub-Spoke network topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 
@@ -89,14 +89,14 @@ module "mod_operational_logging" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
-| <a name="requirement_azurenoopsutils"></a> [azurenoopsutils](#requirement\_azurenoopsutils) | ~> 1.0.4 |
+| <a name="requirement_popsrox-utils"></a> [popsrox-utils](#requirement\_popsrox-utils) | ~> 1.0.4 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.116 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurenoopsutils"></a> [azurenoopsutils](#provider\_azurenoopsutils) | ~> 1.0.4 |
+| <a name="provider_popsrox-utils"></a> [popsrox-utils](#provider\_popsrox-utils) | ~> 1.0.4 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.116 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
@@ -105,11 +105,11 @@ module "mod_operational_logging" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_lz_management_resources"></a> [lz\_management\_resources](#module\_lz\_management\_resources) | Azure/alz-management/azurerm | ~> 0.1 |
-| <a name="module_mod_aa_diagnostic_settings"></a> [mod\_aa\_diagnostic\_settings](#module\_mod\_aa\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
-| <a name="module_mod_azure_region_lookup"></a> [mod\_azure\_region\_lookup](#module\_mod\_azure\_region\_lookup) | azurenoops/overlays-azregions-lookup/azurerm | >= 1.0.0 |
-| <a name="module_mod_log_diagnostic_settings"></a> [mod\_log\_diagnostic\_settings](#module\_mod\_log\_diagnostic\_settings) | azurenoops/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
-| <a name="module_mod_loganalytics_sa"></a> [mod\_loganalytics\_sa](#module\_mod\_loganalytics\_sa) | azurenoops/overlays-storage-account/azurerm | >= 0.1.0 |
-| <a name="module_mod_scaffold_rg"></a> [mod\_scaffold\_rg](#module\_mod\_scaffold\_rg) | azurenoops/overlays-resource-group/azurerm | >= 1.0.1 |
+| <a name="module_mod_aa_diagnostic_settings"></a> [mod\_aa\_diagnostic\_settings](#module\_mod\_aa\_diagnostic\_settings) | POps-Rox/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
+| <a name="module_mod_azure_region_lookup"></a> [mod\_azure\_region\_lookup](#module\_mod\_azure\_region\_lookup) | POps-Rox/overlays-azregions-lookup/azurerm | >= 1.0.0 |
+| <a name="module_mod_log_diagnostic_settings"></a> [mod\_log\_diagnostic\_settings](#module\_mod\_log\_diagnostic\_settings) | POps-Rox/overlays-diagnostic-settings/azurerm | ~> 1.0.4 |
+| <a name="module_mod_loganalytics_sa"></a> [mod\_loganalytics\_sa](#module\_mod\_loganalytics\_sa) | POps-Rox/overlays-storage-account/azurerm | >= 0.1.0 |
+| <a name="module_mod_scaffold_rg"></a> [mod\_scaffold\_rg](#module\_mod\_scaffold\_rg) | POps-Rox/overlays-resource-group/azurerm | >= 1.0.1 |
 
 ## Resources
 
@@ -118,11 +118,11 @@ module "mod_operational_logging" {
 | [azurerm_role_assignment.law_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_user_assigned_identity.management](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/user_assigned_identity) | resource |
 | [random_id.uniqueString](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
-| [azurenoopsutils_resource_name.ampls_snet](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name) | data source |
-| [azurenoopsutils_resource_name.automation_account](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name) | data source |
-| [azurenoopsutils_resource_name.laws](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name) | data source |
-| [azurenoopsutils_resource_name.logging_st](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name) | data source |
-| [azurenoopsutils_resource_name.user_assigned_identity](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name) | data source |
+| [popsrox_resource_name.ampls_snet](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name) | data source |
+| [popsrox_resource_name.automation_account](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name) | data source |
+| [popsrox_resource_name.laws](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name) | data source |
+| [popsrox_resource_name.logging_st](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name) | data source |
+| [popsrox_resource_name.user_assigned_identity](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name) | data source |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 | [azurerm_resource_group.rgrp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
