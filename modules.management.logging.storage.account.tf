@@ -5,7 +5,7 @@
 # Hub Logging Storage Account Creation
 #----------------------------------------------------------
 module "mod_loganalytics_sa" {
-  source                       = "github.com/POps-Rox/tf-az-overlays-storageaccount"
+  source                       = "github.com/POps-Rox/terraform-az-overlays-storageaccount"
   depends_on                   = [module.mod_scaffold_rg]
   existing_resource_group_name = local.resource_group_name
   storage_account_custom_name  = local.ops_logging_law_sa_name

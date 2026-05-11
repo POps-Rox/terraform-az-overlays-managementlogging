@@ -1,10 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: tf-az-overlays-managementlogging
+  name: terraform-az-overlays-managementlogging
   description: Terraform overlay module for Azure management logging (Log Analytics)
   annotations:
-    github.com/project-slug: POps-Rox/tf-az-overlays-managementlogging
+    github.com/project-slug: POps-Rox/terraform-az-overlays-managementlogging
     backstage.io/techdocs-ref: dir:.
   tags:
     - terraform
@@ -12,7 +12,7 @@ metadata:
     - azure
     - platform-ops
   links:
-    - url: https://github.com/POps-Rox/tf-az-overlays-managementlogging
+    - url: https://github.com/POps-Rox/terraform-az-overlays-managementlogging
       title: GitHub Repository
       icon: github
 spec:
