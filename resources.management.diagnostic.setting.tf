@@ -5,7 +5,7 @@
 # Operations Log Analytics Workspace Diagnostic Setting
 #----------------------------------------------------------
 module "mod_log_diagnostic_settings" {
-  source = "github.com/POps-Rox/tf-az-overlays-diagnosticsettings"
+  source = "github.com/POps-Rox/terraform-az-overlays-diagnosticsettings"
 
   # Resource Group, location, VNet and Subnet details
   location           = var.location
@@ -23,7 +23,7 @@ module "mod_log_diagnostic_settings" {
 # Automation Account Diagnostic Setting
 #----------------------------------------------------------
 module "mod_aa_diagnostic_settings" {
-  source = "github.com/POps-Rox/tf-az-overlays-diagnosticsettings"
+  source = "github.com/POps-Rox/terraform-az-overlays-diagnosticsettings"
 
   # Resource Group, location, VNet and Subnet details
   location           = var.location
