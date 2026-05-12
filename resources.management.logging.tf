@@ -5,13 +5,15 @@
 # Operations Log Analytics Workspace Creation
 #----------------------------------------------------------
 module "lz_management_resources" {
-  source  = "Azure/alz-management/azurerm"
-  version = "~> 0.1"
+  source  = "Azure/avm-ptn-alz-management/azurerm"
+  version = "~> 0.9"
+
+  enable_telemetry = var.enable_telemetry
 
   # Resource Group Details
   location                        = local.location
   resource_group_name             = local.resource_group_name
-  resource_group_creation_enabled = false # Resource Group is created by the this Module
+  resource_group_creation_enabled = false # Resource Group is created by sibling overlay
 
   # Automation Account Configuration
   linked_automation_account_creation_enabled       = var.enable_linked_automation_account_creation
@@ -23,16 +25,18 @@ module "lz_management_resources" {
   # Automation Account Managed Identity Configuration
   automation_account_identity = var.enable_linked_automation_account_creation && var.enable_automation_account_user_assigned_identity ? {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.management.0.id]
+    identity_ids = [azurerm_user_assigned_identity.management[0].id]
     } : {
     type         = "SystemAssigned"
-    identity_ids = []
+    identity_ids = null
   }
 
   # Automation Account Encryption Configuration
+  # NOTE: `key_vault_url` is no longer supported by the AVM module; only `key_vault_key_id`
+  # (a full Key Vault key URL) plus an optional `user_assigned_identity_id` are accepted.
   automation_account_encryption = var.enable_linked_automation_account_creation && var.enable_automation_account_encryption ? {
-    key_vault_key_id = var.automation_account_key_vault_key_id
-    key_vault_url    = var.automation_account_key_vault_url
+    key_vault_key_id          = var.automation_account_key_vault_key_id
+    user_assigned_identity_id = var.enable_automation_account_user_assigned_identity ? azurerm_user_assigned_identity.management[0].id : null
   } : null
 
   # Log Analytics Workspace Configuration
@@ -47,5 +51,17 @@ module "lz_management_resources" {
   log_analytics_workspace_sku                                = var.log_analytics_workspace_sku
 
   # Log Analytics Solutions Configuration
-  log_analytics_solution_plans = [for solution in local.log_analytics_solutions : solution if solution.deploy == true]
+  # The new AVM schema accepts only `product` and `publisher`. The legacy `SecurityInsights`
+  # solution plan is excluded here because the AVM module onboards Sentinel via the
+  # dedicated `sentinel_onboarding` input (see below).
+  log_analytics_solution_plans = [
+    for solution in local.log_analytics_solutions : {
+      product   = solution.product
+      publisher = solution.publisher
+    }
+    if solution.deploy == true && solution.name != "SecurityInsights"
+  ]
+
+  # Sentinel onboarding replaces the deprecated SecurityInsights solution plan.
+  sentinel_onboarding = var.enable_sentinel ? {} : null
 }
