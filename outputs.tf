@@ -27,12 +27,14 @@ output "laws_workspace_id" {
 
 output "laws_primary_shared_key" {
   description = "LAWS Primary Shared Key"
-  value       = module.lz_management_resources.log_analytics_workspace.primary_shared_key
+  sensitive   = true
+  value       = module.lz_management_resources.log_analytics_workspace_keys.primary
 }
 
 output "laws_secondary_shared_key" {
-  description = "LAWS Primary Shared Key"
-  value       = module.lz_management_resources.log_analytics_workspace.secondary_shared_key
+  description = "LAWS Secondary Shared Key"
+  sensitive   = true
+  value       = module.lz_management_resources.log_analytics_workspace_keys.secondary
 }
 
 output "laws_storage_account_id" {

@@ -53,5 +53,11 @@ variable "existing_resource_group_name" {
   default     = null
 }
 
+variable "enable_telemetry" {
+  description = "Controls whether telemetry is enabled for the underlying `Azure/avm-ptn-alz-management/azurerm` module. See <https://aka.ms/avm/telemetryinfo>. Defaults to true."
+  type        = bool
+  default     = true
+}
+
 
 
