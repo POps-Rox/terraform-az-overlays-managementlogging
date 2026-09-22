@@ -20,5 +20,5 @@ module "mod_loganalytics_sa" {
   account_replication_type = var.loganalytics_storage_account_replication_type
   # Locks
   enable_resource_locks = var.enable_resource_locks
-  add_tags              = merge(local.default_tags, var.add_tags, )
+  add_tags              = local.common_tags
 }
