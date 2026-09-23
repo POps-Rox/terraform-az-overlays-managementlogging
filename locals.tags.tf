@@ -10,4 +10,5 @@ locals {
     env        = var.deploy_environment
     workload   = var.workload_name
   } : {}
+  common_tags = merge(local.default_tags, var.add_tags)
 }

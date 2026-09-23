@@ -5,8 +5,8 @@
 # Operations Log Analytics Workspace Creation
 #----------------------------------------------------------
 module "lz_management_resources" {
-  source  = "Azure/avm-ptn-alz-management/azurerm"
-  version = "~> 0.9"
+  # Upstream Azure/avm-ptn-alz-management/azurerm v0.9.0 still pins azurerm 4.x.
+  source = "./modules/lz-management-azurerm5"
 
   enable_telemetry = var.enable_telemetry
 
